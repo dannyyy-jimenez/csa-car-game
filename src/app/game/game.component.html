@@ -1,1 +1,23 @@
 <canvas #canvas style="width: 100%; height: 100%"></canvas>
+<div class="leaderboard">
+  <h3>Leaderboard</h3>
+  <ul>
+    <li *ngFor="let score of scores">{{score.nickname}} - {{score.score}}</li>
+  </ul>
+</div>
+<div class="lost" *ngIf="!started" (click)="initGame()">
+  <span class="banner" green>
+    Start - {{nickname ? nickname : 'Anonymous'}}
+  </span>
+</div>
+<div class="lost" *ngIf="lost" (click)="onRestart()">
+  <span class="banner">
+    YOU LOSE - {{ score }}
+  </span>
+</div>
+<div class="tile">
+  <input type="text" placeholder="Nickname" [(ngModel)]="nickname"/>
+</div>
+<div class="tile" sec>
+  {{ score }}
+</div>
